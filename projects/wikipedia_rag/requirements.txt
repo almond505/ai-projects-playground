@@ -1,0 +1,6 @@
+transformers
+torch
+gradio
+langchain
+wikipedia
+# Add vector store library, e.g., faiss-cpu or chromadb

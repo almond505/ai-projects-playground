@@ -1,0 +1,6 @@
+[tool.poetry]
+name = "ai-projects-playground"
+version = "0.1.0"
+description = "A collection of AI projects."
+authors = ["Your Name <you@example.com>"] # Consider updating this
+readme = "README.md"
