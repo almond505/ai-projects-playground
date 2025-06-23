@@ -7,11 +7,16 @@ It then launches a Gradio interface for user interaction.
 """
 
 import re
+import traceback
 from typing import Optional, Dict, Any, List
-
 import torch
 import gradio as gr
-from youtube_transcript_api import YouTubeTranscriptApi
+from youtube_transcript_api import (
+    YouTubeTranscriptApi,
+    NoTranscriptFound,
+    TranscriptsDisabled,
+    VideoUnavailable,
+    InvalidVideoId)
 from youtube_transcript_api.formatters import TextFormatter
 from transformers import pipeline
 
@@ -68,13 +73,30 @@ def get_youtube_summary_from_url(video_url: str) -> str:
     if not video_id:
         return "Video ID could not be extracted."
 
+    print(f"video_id found: {video_id}")
     try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        # The fetch() method returns a FetchedTranscript object, which is what the formatter expects.
+        # It will raise NoTranscriptFound if no transcript is available in the default languages (e.g., 'en').
+        fetched_transcript = YouTubeTranscriptApi().fetch(video_id)
         formatter = TextFormatter()
-        text_transcript = formatter.format_transcript(transcript)
+        text_transcript = formatter.format_transcript(fetched_transcript)
+
+        if not text_transcript.strip(): # Check if the formatted transcript is empty or just whitespace
+            return "Transcript is empty or could not be formatted."
+
         summary_text = generate_summary(text_transcript)
         return summary_text
+    except NoTranscriptFound:
+        return "No transcript found for this video (or auto-generated captions are not available/disabled)."
+    except TranscriptsDisabled:
+        return "Transcripts are disabled for this video."
+    except VideoUnavailable:
+        return "Video is unavailable or private."
+    except InvalidVideoId:
+        return "Invalid video id."
     except Exception as e:
+        traceback.print_exc() # This will print the full stack trace to stderr
+        print(e)
         return f"An error occurred: {e}"
 
 if __name__ == "__main__":
