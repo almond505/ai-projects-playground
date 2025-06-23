@@ -2,5 +2,35 @@
 name = "ai-projects-playground"
 version = "0.1.0"
 description = "A collection of AI projects."
-authors = ["Your Name <you@example.com>"] # Consider updating this
+authors = ["Almond505 <almond505@gmail.com>"]
 readme = "README.md"
+packages = [{include = "ai_projects_playground"}]
+
+[tool.poetry.dependencies]
+python = ">=3.12,<3.14"
+torch = "^2.3.1"
+transformers = "^4.41.2"
+youtube-transcript-api = "^1.0.0"
+gradio = "^4.36.1"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+ruff = "^0.4.8"
+mypy = "^1.10.0"
+pre-commit = "^3.7.1"
+notebook = "^7.2.1"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B", "C4"]
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
