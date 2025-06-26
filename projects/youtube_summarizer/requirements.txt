@@ -1,4 +1,0 @@
-youtube-transcript-api
-torch
-gradio
-transformers
