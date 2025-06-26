@@ -1,4 +1,0 @@
-transformers
-torch
-gradio
-# Add other specific sentiment analysis libraries if known, e.g., scikit-learn

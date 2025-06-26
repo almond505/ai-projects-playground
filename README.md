@@ -27,7 +27,18 @@ You can run any of the project applications using `poetry run`.
     ```bash
     poetry run python3 projects/youtube_summarizer/app/summarizer.py
     ```
+*   **To run the Sentiment Analyzer:**
+    ```bash
+    poetry run python3 projects/sentiment_analyzer/app/sentiment_analyzer.py
+    ```
 <!-- *   **To run the Wikipedia RAG:**
     ```bash
     poetry run python3 projects/wikipedia_rag/app/app.py
     ``` -->
+
+## Usage Notes
+
+### Sentiment Analyzer
+
+- The application expects an Excel file (`.xlsx`).
+- The Excel file **must** contain a column named `Reviews` for the analysis to work correctly.
