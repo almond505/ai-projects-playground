@@ -1,0 +1,1 @@
+# This file makes the 'app' directory under 'sentiment_analyzer' a Python package.
