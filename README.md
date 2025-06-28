@@ -4,9 +4,10 @@ This repository contains a collection of AI projects.
 
 ## Projects
 
-- Sentiment Analyzer
-- YouTube Summarizer
-- Wikipedia RAG
+- [Wikipedia RAG](./projects/wikipedia_rag/README.md)
+- [Sentiment Analyzer](.projects/sentiment_analyzer/app/sentiment_analyzer.py)
+- [YouTube Summarizer](./projects/youtube_summarizer/app/summarizer.py)
+
 
 
 ## Quick Start
@@ -38,13 +39,13 @@ You can run any of the project applications using `poetry run`.
 
 ## Usage Notes
 
-### Sentiment Analyzer
-
-- The application expects an Excel file (`.xlsx`).
-- The Excel file **must** contain a column named `Reviews` for the analysis to work correctly.
-
 ### Wikipedia RAG
 
 - This application requires a local Ollama instance to be running.
 - For detailed setup instructions, including which models to pull, please see the Wikipedia RAG README.
 - [Wikipedia RAG](./projects/wikipedia_rag/README.md)
+
+### Sentiment Analyzer
+
+- The application expects an Excel file (`.xlsx`).
+- The Excel file **must** contain a column named `Reviews` for the analysis to work correctly.
